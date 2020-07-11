@@ -1,0 +1,28 @@
+{
+    "name": "danieletulone/laravel-files-support",
+    "description": "A package for get models, controller, etc.",
+    "type": "library",
+    "keywords": [
+        "laravel",
+        "token",
+        "role",
+        "scopes",
+        "scope",
+        "passport",
+        "authentication",
+        "authorization"
+    ],
+    "authors": [
+        {
+            "name": "danieletulone",
+            "email": "danieletulone.work@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "DanieleTulone\\Support\\Files": "src/"
+        }
+    },
+}
