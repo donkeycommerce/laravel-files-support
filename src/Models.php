@@ -3,7 +3,6 @@
 namespace DanieleTulone\Support\Files;
 
 use DanieleTulone\Support\Files\Contracts\ResourceContract;
-use Illuminate\Support\Str;
 
 class Models implements ResourceContract
 {
@@ -11,6 +10,36 @@ class Models implements ResourceContract
      * @inheritedDoc
      */
     protected static $folder = 'Models';
+
+    /**
+     * @inheritedDoc
+     */
+    public static function all(): array
+    {
+        $files = array_merge(
+            scandir(app_path()),
+            static::hasFolder() ? scandir(app_path(static::$folder)) : []
+        );
+
+        return static::getPhpFiles($files);
+    }
+    
+    /**
+     * Get model name from controller.
+     * If controller is PostController, model will be Post
+     *
+     * @return void
+     */
+    final protected function deduce($from = 'controller')
+    {
+        $model = Str::replaceFirst('Controller', '', class_basename($controller));
+
+        if (class_exists(static::getNamespace() . '\\' . ucfirst($model))) {
+            return static::getNamespace() . '\\' . ucfirst($model);
+        } else {
+            return null;
+        }
+    }
 
     /**
      * @inheritedDoc
@@ -27,21 +56,16 @@ class Models implements ResourceContract
     }
 
     /**
-     * @inheritedDoc
+     * Get namespace for models.
+     * 
+     * @author Daniele Tulone <danieletulone.work@gmail.com>
+     *
+     * @return void
      */
-    public static function get(): array
+    public static function getNamespace()
     {
-        $files = array_merge(
-            scandir(app_path()),
-            static::hasFolder() ? scandir(app_path(static::$folder)) : []
-        );
-
-        return array_values(array_filter($files, function($item) {
-            if (in_array($item, ['.', '..']) || !Str::contains($item, '.php')) {
-                return false;
-            }
-            
-            return true;
-        }));
+        return static::hasFolder() 
+               ? app()->getNamespace() . '\\' . static::$folder 
+               : app()->getNamespace();
     }
 }
