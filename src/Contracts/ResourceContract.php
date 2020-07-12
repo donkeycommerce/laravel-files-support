@@ -11,7 +11,7 @@ interface ResourceContract
      *
      * @return boolean
      */
-    abstract public static function hasFolder(): bool;
+    public static function hasFolder(): bool;
 
     /**
      * Get all files of current resource type.
@@ -20,5 +20,5 @@ interface ResourceContract
      * 
      * @return array
      */
-    abstract public static function get(): array;
+    public static function all(): array;
 }

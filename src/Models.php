@@ -4,7 +4,7 @@ namespace DanieleTulone\Support\Files;
 
 use DanieleTulone\Support\Files\Contracts\ResourceContract;
 
-class Models implements ResourceContract
+class Models extends Resource implements ResourceContract
 {
     /**
      * @inheritedDoc
