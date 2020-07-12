@@ -30,9 +30,15 @@ class Models implements ResourceContract
      *
      * @return void
      */
-    final protected function deduce($from = 'controller')
+    final protected function deduce($from = 'controller', $class)
     {
-        $model = Str::replaceFirst('Controller', '', class_basename($controller));
+        $model = Str::replaceFirst(
+            $from, 
+            '', 
+            Str::lower(
+                class_basename($controller)
+            )
+        );
 
         if (class_exists(static::getNamespace() . '\\' . ucfirst($model))) {
             return static::getNamespace() . '\\' . ucfirst($model);
