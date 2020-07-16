@@ -1,5 +1,5 @@
 {
-    "name": "danieletulone/laravel-files-support",
+    "name": "donkeycommerce/laravel-files-support",
     "description": "A package for get models, controller, etc.",
     "type": "library",
     "keywords": [
