@@ -4,7 +4,7 @@ namespace DonkeyCommerce\Support\Files;
 
 use DonkeyCommerce\Support\Files\Contracts\ResourceContract;
 
-class Models extends Resource implements ResourceContract
+class Migrations extends Resource implements ResourceContract
 {
     /**
      * @inheritedDoc
@@ -12,7 +12,7 @@ class Models extends Resource implements ResourceContract
     public static function hasFolder(): bool
     {
         try {
-            scandir(app_path('Models'));
+            scandir(database_path('migrations'));
         } catch (Exception $e) {
             return false;
         }
