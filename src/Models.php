@@ -3,6 +3,7 @@
 namespace DonkeyCommerce\Support\Files;
 
 use DonkeyCommerce\Support\Files\Contracts\ResourceContract;
+use Illuminate\Support\Str;
 
 class Models extends Resource implements ResourceContract
 {
@@ -30,7 +31,7 @@ class Models extends Resource implements ResourceContract
      *
      * @return void
      */
-    final protected function deduce($from = 'controller', $class)
+    public static function deduce($class, $from = 'controller')
     {
         $model = Str::replaceFirst(
             $from, 
