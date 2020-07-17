@@ -1,6 +1,6 @@
 <?php
 
-namespace DanieleTulone\Support\Files;
+namespace DonkeyCommerce\Support\Files;
 
 use Illuminate\Support\Str;
 

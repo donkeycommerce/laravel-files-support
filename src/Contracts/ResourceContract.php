@@ -1,6 +1,6 @@
 <?php
 
-namespace DanieleTulone\Support\Files\Contracts;
+namespace DonkeyCommerce\Support\Files\Contracts;
 
 interface ResourceContract
 {

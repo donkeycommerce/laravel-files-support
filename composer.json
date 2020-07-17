@@ -22,7 +22,7 @@
     "require": {},
     "autoload": {
         "psr-4": {
-            "DanieleTulone\\Support\\Files\\": "src/"
+            "DonkeyCommerce\\Support\\Files\\": "src/"
         }
     }
 }

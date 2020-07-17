@@ -1,8 +1,8 @@
 <?php
 
-namespace DanieleTulone\Support\Files;
+namespace DonkeyCommerce\Support\Files;
 
-use DanieleTulone\Support\Files\Contracts\ResourceContract;
+use DonkeyCommerce\Support\Files\Contracts\ResourceContract;
 
 class Models extends Resource implements ResourceContract
 {
