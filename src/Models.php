@@ -3,7 +3,6 @@
 namespace DonkeyCommerce\Support\Files;
 
 use DonkeyCommerce\Support\Files\Contracts\ResourceContract;
-use Illuminate\Support\Str;
 
 class Models extends Resource implements ResourceContract
 {
@@ -33,18 +32,12 @@ class Models extends Resource implements ResourceContract
      */
     public static function deduce($class, $from = 'controller')
     {
-        $model = Str::replaceFirst(
-            $from, 
-            '', 
-            Str::lower(
-                class_basename($controller)
-            )
-        );
-
+        $model = str_replace($from, '', strtolower((new \ReflectionClass($class))->getShortName()));
+        
         if (class_exists(static::getNamespace() . '\\' . ucfirst($model))) {
             return static::getNamespace() . '\\' . ucfirst($model);
         } else {
-            return null;
+            return '';
         }
     }
 
@@ -72,7 +65,7 @@ class Models extends Resource implements ResourceContract
     public static function getNamespace()
     {
         return static::hasFolder() 
-               ? app()->getNamespace() . '\\' . static::$folder 
+               ? app()->getNamespace() . static::$folder 
                : app()->getNamespace();
     }
 }
